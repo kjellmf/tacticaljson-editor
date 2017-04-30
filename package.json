@@ -1,8 +1,13 @@
 {
   "name": "tacticaljson-editor",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A simple TacticalJSON editor",
   "author": "Kjell Magne Fauske",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kjellmf/tacticaljson-editor.git"
+  },
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
