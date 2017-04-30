@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid" id="app">
     <div class="row no-gutters a-wrapper">
-      <div class="col-9" id="map-view">
+      <div class="col-8" id="map-view">
         <main-map></main-map>
       </div>
-      <div class="col-3" id="sidebar">
+      <div class="col-4" id="sidebar">
         <nav class="nav nav-tabs tabs">
           <router-link to="/" class="nav-link" exact>Main</router-link>
           <router-link to="/json" class="nav-link" exact>JSON</router-link>
