@@ -1,33 +1,17 @@
 <template>
-  <v-map id="map-view" :zoom="zoom" :center="center">
-    <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-    <v-geojson-layer :geojson="jsonlayer"></v-geojson-layer>
-  </v-map>
+  <leaflet-map id="map-view" :zoom="zoom" :center="center"></leaflet-map>
 </template>
 
 <script>
-  import Vue2Leaflet from 'vue2-leaflet';
+  import LeafletMap from './LeafletMap';
   import turf from 'turf';
   import {getCoord} from 'turf-invariant';
-
-  // Temp hack to get markers working
-  import L from 'leaflet';
-  import icon from 'leaflet/dist/images/marker-icon.png';
-  import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-  let DefaultIcon = L.icon({
-    iconUrl: icon,
-    shadowUrl: iconShadow
-  });
-  L.Marker.prototype.options.icon = DefaultIcon;
-
 
   export default {
     name: 'MainMap',
     components: {
-      'v-map': Vue2Leaflet.Map,
-      'v-tilelayer': Vue2Leaflet.TileLayer,
-      'v-geojson-layer': Vue2Leaflet.GeoJSON,
-      'v-marker': Vue2Leaflet.Marker
+      'leaflet-map': LeafletMap,
+
     },
     data () {
       return {

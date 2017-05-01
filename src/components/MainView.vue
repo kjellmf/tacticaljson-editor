@@ -22,7 +22,6 @@
 
 <script>
   import * as ms from 'milgraphics';
-  import {EventBus} from "../event-bus";
 
   export default {
     name: 'hello',
@@ -46,10 +45,10 @@
         reader.onload = (e) => {
           this.myjson = e.target["result"];
           let layer = new ms.GraphicsLayer(new ms.format.GeoJSON(this.myjson));
-          console.log(layer);
+          let map = this.$store.state.mapWrapper.map;
+          map.addLayer(layer.asLeaflet());
           let tgjson = JSON.parse(JSON.stringify(layer.data));
           this.$store.commit('setTJson', tgjson);
-          EventBus.$emit('json-loaded', layer.data);
         };
         reader.readAsText(files[0]);
       }
