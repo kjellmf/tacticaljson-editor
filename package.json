@@ -22,7 +22,8 @@
     "turf": "^3.0.14",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",
-    "vue2-leaflet": "0.0.47"
+    "vue2-leaflet": "0.0.47",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

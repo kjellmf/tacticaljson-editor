@@ -28,8 +28,13 @@
     name: 'hello',
     data () {
       return {
-        tgjson: {}
+
       };
+    },
+    computed: {
+      tgjson () {
+        return this.$store.state.tgjson;
+      }
     },
     methods: {
       onFileChange(e) {
@@ -42,8 +47,8 @@
           this.myjson = e.target["result"];
           let layer = new ms.GraphicsLayer(new ms.format.GeoJSON(this.myjson));
           console.log(layer);
-          this.tgjson = layer.data;
-
+          let tgjson = JSON.parse(JSON.stringify(layer.data));
+          this.$store.commit('setTJson', tgjson);
           EventBus.$emit('json-loaded', layer.data);
         };
         reader.readAsText(files[0]);

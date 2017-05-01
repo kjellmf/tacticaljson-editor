@@ -1,7 +1,7 @@
 <template>
   <div class="balla">
   <pre>
-    {{ code }}
+    {{ tjson }}
   </pre>
   </div>
 </template>
@@ -13,54 +13,13 @@
     name: 'JsonView',
     data () {
       return {
-        code: {
-          "type": "FeatureCollection",
-          "features": [
-            {
-              "type": "Feature",
-              "properties": {
-                "sidc": "G-F-AZIR------X",
-                "distance": 5000,
-                "uniqueDesignation": "Q36"
-              },
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  [
-                    0.6008148193359375,
-                    47.38672820892124
-                  ],
-                  [
-                    0.6488800048828125,
-                    47.40810885284093
-                  ]
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "sidc": "G-F-AZIR------X",
-                "distance": 5000,
-                "uniqueDesignation": "Q36"
-              },
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  [
-                    0.6008148193359375,
-                    47.38672820892124
-                  ],
-                  [
-                    0.6488800048828125,
-                    47.40810885284093
-                  ]
-                ]
-              }
-            }
-          ]
-        }
+        code: ""
       };
+    },
+    computed: {
+      tjson () {
+        return this.$store.state.tgjson;
+      }
     }
   };
 </script>

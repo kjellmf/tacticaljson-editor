@@ -6,11 +6,21 @@
 </template>
 
 <script>
-  //  import * as L from 'leaflet'
-  import {EventBus} from '../event-bus';
   import Vue2Leaflet from 'vue2-leaflet';
   import turf from 'turf';
   import {getCoord} from 'turf-invariant';
+
+  // Temp hack to get markers working
+  import L from 'leaflet';
+  import icon from 'leaflet/dist/images/marker-icon.png';
+  import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+  let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow
+  });
+  L.Marker.prototype.options.icon = DefaultIcon;
+
+
   export default {
     name: 'MainMap',
     components: {
@@ -28,17 +38,39 @@
         jsonlayer: null,
       };
     },
-    mounted() {
-      EventBus.$on('json-loaded', (layer) => {
-        this.jsonlayer = layer;
-        this.center= getCoord(turf.center(layer)).reverse();
-      });
+    computed: {
+      tgjson () {
+        return this.$store.state.tgjson;
+      }
     },
+    watch: {
+      tgjson(newValue) {
+        this.processJson(newValue);
+      }
+    },
+    methods: {
+      processJson(layer) {
+//        for (let f of layer.features) {
+//          let g = f.graphic;
+//          if (g && g.annotations) {
+//            for (let a of g.annotations) {
+//              a.type = "Feature";
+//              layer.features.push(a);
+//            }
+//          }
+//
+//        }
+        console.log(layer);
+        this.jsonlayer = JSON.parse(JSON.stringify(layer));
+        this.center = getCoord(turf.center(layer)).reverse();
+      }
+    }
 
   };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
   @import "../../node_modules/leaflet/dist/leaflet.css";
 </style>
