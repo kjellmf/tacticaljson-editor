@@ -1,9 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import MainView from '../components/MainView';
-import AboutView from '../components/AboutView';
-import JsonView from '../components/JsonView';
-
+import MainView from './components/MainView';
+import AboutView from './components/AboutView';
+import JsonView from './components/JsonView';
 
 Vue.use(Router);
 
