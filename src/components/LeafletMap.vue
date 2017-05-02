@@ -18,9 +18,7 @@
     name: "LeafletMap",
     props: ["zoom", "center"],
     data () {
-      return {
-
-      };
+      return {};
     },
     watch: {
       center() {
@@ -52,5 +50,20 @@
   .mymap {
     width: 100%;
     height: 100%;
+  }
+
+  .my-icon {
+    font: bold 16pt sans-serif;
+   text-color:black;
+    fill:black;
+    background-color: white;
+
+    height:auto!important;
+    width:auto!important;
+    text-align:left!important;
+    margin-left:-8pt!important;
+    margin-top:-8pt!important;
+    text-shadow: 2px 2px white!important;
+    /*position:relative!important;*/
   }
 </style>
