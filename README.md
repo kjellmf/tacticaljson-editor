@@ -1,6 +1,7 @@
-# tacticaljson-editor
+# TacticalJSON editor
 
-> A Vue.js project
+This project is a simple web app created to experiment with [TacticalJSON](https://github.com/spatialillusions/TacticalJSON), 
+[milsymbol](https://github.com/spatialillusions/milsymbol) and [milgraphics](https://github.com/spatialillusions/milgraphics).
 
 ## Build Setup
 
