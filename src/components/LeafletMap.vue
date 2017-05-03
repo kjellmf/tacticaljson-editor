@@ -53,17 +53,36 @@
   }
 
   .my-icon {
-    font: bold 16pt sans-serif;
+    font: bold 16px sans-serif;
    text-color:black;
     fill:black;
     background-color: white;
-
-    height:auto!important;
+    text-wrap:none;
+    /*height:auto!important;*/
     width:auto!important;
-    text-align:left!important;
+    text-align:center!important;
     margin-left:-8pt!important;
     margin-top:-8pt!important;
     text-shadow: 2px 2px white!important;
+    white-space: pre-line;
     /*position:relative!important;*/
+  }
+
+  .label {
+    /*font-weight: 700;*/
+    font: bold 16px sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    position:relative;
+    /*margin-top: -8px;*/
+    margin-top:-50%;
+
+  }
+
+  .label div {
+    position: relative;
+    background-color: rgba(255,255,255,0.7);
+    left: -50%;
+    /*text-shadow: 0px 2px 2px rgba(255,255,255,1);*/
   }
 </style>

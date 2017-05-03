@@ -18,9 +18,9 @@ export default function asLeaflet() {
     layer.addData(feature);
     if (feature.graphic.annotations) {
       let annotation = feature.graphic.annotations[0];
-      let divIcon = L.divIcon({html: annotation.properties.text, className: "my-icon"});
+      let divIcon = L.divIcon({html: `<div>${annotation.properties.text}</div>`, className: "label", iconSize:null});
       console.log(feature);
-      if (feature.graphic.geometry.type == "Point") {
+      if (feature.geometry.type == "LineString" || feature.geometry.type == "MultiLineString") {
         layer.addLayer(L.marker(annotation.geometry.coordinates.reverse(), {icon: divIcon}));
       } else if (feature.graphic.geometry.type == "Polygon") {
         layer.addLayer(L.marker(getCoord(turf.center(turf.feature(feature.graphic.geometry))).reverse(), {icon: divIcon}));
