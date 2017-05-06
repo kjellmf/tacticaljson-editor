@@ -23,29 +23,19 @@
       };
     },
     computed: {
-      tgjson () {
-        return this.$store.state.tgjson;
+      features () {
+        return this.$store.state.features;
       }
     },
     watch: {
-      tgjson(newValue) {
-        this.processJson(newValue);
+      features(newValue) {
+        if (newValue.length) {
+          this.processJson(newValue[newValue.length - 1]);
+        }
       }
     },
     methods: {
       processJson(layer) {
-//        for (let f of layer.features) {
-//          let g = f.graphic;
-//          if (g && g.annotations) {
-//            for (let a of g.annotations) {
-//              a.type = "Feature";
-//              layer.features.push(a);
-//            }
-//          }
-//
-//        }
-        console.log(layer);
-        this.jsonlayer = JSON.parse(JSON.stringify(layer));
         this.center = getCoord(turf.center(layer)).reverse();
       }
     }

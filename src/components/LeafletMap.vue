@@ -38,7 +38,9 @@
       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.map);
-      this.$store.commit('assignMap', this.map);
+      let tgLayer = L.layerGroup();
+      tgLayer.addTo(map);
+      this.$store.commit('assignMap', {map:this.map, tgLayer: tgLayer});
 //      EventBus.$on('map-resized', this.resize)
     }
   };

@@ -1,11 +1,14 @@
 <template>
   <div class="p-2">
-    <label class="btn btn-primary" for="my-file-selector">
-      <input id="my-file-selector" type="file" style="display:none;" @change="onFileChange">
-      Load file
-    </label>
-    <div v-if="tgjson.features">
-      <div class="card" v-for="feature in tgjson.features">
+    <div class="mb-2">
+      <label class="btn btn-primary btn-sm" for="my-file-selector">
+        <input id="my-file-selector" type="file" style="display:none;" @change="onFileChange">
+        Add JSON file</label>
+      <button class="btn btn-primary btn-sm" type="button" @click="clear">Clear</button>
+      <button class="btn btn-primary btn-sm disabled" type="button">Download</button>
+    </div>
+    <div v-if="features">
+      <div class="card" v-for="feature in features">
         <div class="card-block">
           <h6 class="card-subtitle mb-2 text-muted">{{feature.graphic.SIDC}}</h6>
           <table class="table">
@@ -21,18 +24,16 @@
 </template>
 
 <script>
-  import * as ms from 'milgraphics';
+
 
   export default {
     name: 'hello',
     data () {
-      return {
-
-      };
+      return {};
     },
     computed: {
-      tgjson () {
-        return this.$store.state.tgjson;
+      features () {
+        return this.$store.state.features;
       }
     },
     methods: {
@@ -44,18 +45,20 @@
 
         reader.onload = (e) => {
           this.myjson = e.target["result"];
-          let layer = new ms.GraphicsLayer(new ms.format.GeoJSON(this.myjson));
-          let map = this.$store.state.mapWrapper.map;
-          map.addLayer(layer.asLeaflet());
-          let tgjson = JSON.parse(JSON.stringify(layer.data));
-          this.$store.commit('setTJson', tgjson);
+          this.$store.dispatch("addTGJson", this.myjson);
         };
         reader.readAsText(files[0]);
+      },
+      clear() {
+          this.$store.dispatch("clearFeatures");
       }
     }
   };
 </script>
 
 <style scoped>
+  label.btn {
+    margin-bottom: 0;
+  }
 
 </style>

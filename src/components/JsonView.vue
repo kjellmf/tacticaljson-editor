@@ -18,7 +18,7 @@
     },
     computed: {
       tjson () {
-        return this.$store.state.tgjson;
+        return {type: "FeatureCollection", features: this.$store.state.features};
       }
     }
   };
