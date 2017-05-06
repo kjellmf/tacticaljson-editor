@@ -69,20 +69,23 @@
   }
 
   .label {
-    /*font-weight: 700;*/
-    font: bold 16px sans-serif;
-    text-transform: uppercase;
+    font: bold 1rem sans-serif;
     text-align: center;
-    position:relative;
-    /*margin-top: -8px;*/
-    margin-top:-50%;
-
   }
 
-  .label div {
-    position: relative;
-    background-color: rgba(255,255,255,0.7);
-    left: -50%;
-    /*text-shadow: 0px 2px 2px rgba(255,255,255,1);*/
+  .leaflet-tooltip {
+    padding:2px;
+    background-color: rgba(255,255,255,0.5);
   }
+
+  .label pre {
+    margin:0;
+  }
+
+  /*.label div {*/
+    /*position: relative;*/
+    /*background-color: rgba(255,255,255,0.7);*/
+    /*left: -50%;*/
+    /*!*text-shadow: 0px 2px 2px rgba(255,255,255,1);*!*/
+  /*}*/
 </style>
